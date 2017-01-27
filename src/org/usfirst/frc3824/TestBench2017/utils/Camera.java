@@ -1,4 +1,4 @@
-package org.usfirst.frc3824.TestBench.utils;
+package org.usfirst.frc3824.TestBench2017.utils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -95,6 +95,8 @@ public class Camera
 
 				System.out.println("Area: " + area);
 			}
+			
+//			contours.stream().map(Imgproc.contourArea);
 
 			for (int i = 0; i < contours.size(); i++)
 			{

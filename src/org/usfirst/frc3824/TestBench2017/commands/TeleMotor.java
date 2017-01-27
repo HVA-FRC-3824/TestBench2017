@@ -8,10 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-package org.usfirst.frc3824.TestBench.commands;
+package org.usfirst.frc3824.TestBench2017.commands;
+
+import org.usfirst.frc3824.TestBench2017.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc3824.TestBench.Robot;
 
 /*
  *

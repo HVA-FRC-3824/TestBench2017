@@ -8,10 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-package org.usfirst.frc3824.TestBench.subsystems;
+package org.usfirst.frc3824.TestBench2017.subsystems;
 
-import org.usfirst.frc3824.TestBench.RobotMap;
-import org.usfirst.frc3824.TestBench.commands.*;
+import org.usfirst.frc3824.TestBench2017.RobotMap;
+import org.usfirst.frc3824.TestBench2017.commands.*;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 

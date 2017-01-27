@@ -8,10 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-package org.usfirst.frc3824.TestBench.commands;
+package org.usfirst.frc3824.TestBench2017.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc3824.TestBench.Robot;
+
+import org.usfirst.frc3824.TestBench2017.Robot;
 
 import com.ctre.CANTalon;
 
@@ -44,6 +45,9 @@ public class ShooterNew extends Command
 	// Called just before this Command runs the first time
 	protected void initialize()
 	{
+		Robot.newShooter.enableShooterPID();
+		Robot.newShooter.setShooterPID_ParametersFromSmartdashboard();
+		Robot.newShooter.setShooterRPM_FromSmartdashboard();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -60,11 +64,13 @@ public class ShooterNew extends Command
 	// Called once after isFinished returns true
 	protected void end()
 	{
+		Robot.newShooter.disableShooterPID();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted()
 	{
+		end();
 	}
 }
