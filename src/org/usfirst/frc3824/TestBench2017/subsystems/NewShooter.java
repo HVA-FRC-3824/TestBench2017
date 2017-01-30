@@ -46,21 +46,22 @@ public class NewShooter extends Subsystem
 		shooter.configPeakOutputVoltage(12.0f, -12.0f);
 
 		/* set closed loop gains in slot0 */
-		SmartDashboard.putNumber("Shooter P", 0.04);
-		SmartDashboard.putNumber("Shooter I", 0.0005);
-		SmartDashboard.putNumber("Shooter D", 0.0005);
-		SmartDashboard.putNumber("Shooter F", 0.001);
-		SmartDashboard.putNumber("Shooter RPM Setpoint", 1500);
+		SmartDashboard.putNumber("Shooter P", 50.0);
+		SmartDashboard.putNumber("Shooter I", 0.4);
+		SmartDashboard.putNumber("Shooter D", 0.0);
+		SmartDashboard.putNumber("Shooter F", 0.0);
+		SmartDashboard.putNumber("Shooter RPM Setpoint", 4500);
 
 		// Set the profile for the PID parameters
 		shooter.setProfile(0);
 		shooter.configEncoderCodesPerRev(4096);
+		shooter.reverseSensor(true);
 
 		// Use the PID values from the smartdashboard, which were just set
-		shooter.setP(SmartDashboard.getNumber("Shooter P", 0.0));
-		shooter.setI(SmartDashboard.getNumber("Shooter I", 0.0));
-		shooter.setD(SmartDashboard.getNumber("Shooter D", 0.0));
-		shooter.setF(SmartDashboard.getNumber("Shooter F", 0.0));
+		shooter.setP(SmartDashboard.getNumber("Shooter P", 50.0)/1000);
+		shooter.setI(SmartDashboard.getNumber("Shooter I", 0.4)/1000);
+		shooter.setD(SmartDashboard.getNumber("Shooter D", 0.0)/1000);
+		shooter.setF(SmartDashboard.getNumber("Shooter F", 0.0)/1000);
 	}
 
 	public void initDefaultCommand()
@@ -171,10 +172,11 @@ public class NewShooter extends Subsystem
 	public void setShooterPID_ParametersFromSmartdashboard()
 	{
 		// Read the F, P, I and D parameters from the smartdashboard
-		shooter.setF(SmartDashboard.getNumber("Shooter F", 0.0));
-		shooter.setP(SmartDashboard.getNumber("Shooter P", 0.0));
-		shooter.setI(SmartDashboard.getNumber("Shooter I", 0.0));
-		shooter.setD(SmartDashboard.getNumber("Shooter D", 0.0));
+		// divide everthing by 1000 so smart dashboard numbers are not really small
+		shooter.setF(SmartDashboard.getNumber("Shooter F", 0.0)/1000);
+		shooter.setP(SmartDashboard.getNumber("Shooter P", 0.0)/1000);
+		shooter.setI(SmartDashboard.getNumber("Shooter I", 0.0)/1000);
+		shooter.setD(SmartDashboard.getNumber("Shooter D", 0.0)/1000);
 	}
 	
 	/*
@@ -183,6 +185,6 @@ public class NewShooter extends Subsystem
 	public void setShooterRPM_FromSmartdashboard()
 	{
 		// Set the shooter speed from the smartdashboard
-		setShooterRPM(SmartDashboard.getNumber("Shooter RPM Setpoint", 1000));
+		setShooterRPM(SmartDashboard.getNumber("Shooter RPM Setpoint", 4500));
 	}
 }
